@@ -29,7 +29,7 @@ class CreateEmployee extends FormRequest
             'first_name' => ['required', 'string', 'max:30', 'min:2'],
             'last_name' => ['required', 'string', 'max:30', 'min:2'],
             'email' => ['required', 'email', 'unique:employees,email'],
-            'phone' => ['string', 'max:15'],
+            'phone' => ['numeric', 'digits_between:4,15'],
             // 'company' => ['required', 'in:' . Company::pluck('id')->implode(',')],
             'company' => ['required', new IsExists('companies', 'id')],
         ];

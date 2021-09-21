@@ -29,7 +29,7 @@ class UpdateEmployee extends FormRequest
             'first_name' => ['sometimes', 'string', 'max:30', 'min:2'],
             'last_name' => ['sometimes', 'string', 'max:30', 'min:2'],
             'email' => ['sometimes', 'email', Rule::unique('employees', 'email')->ignore($this->email, 'email')],
-            'phone' => ['string', 'max:15'],
+            'phone' => ['numeric', 'digits_between:4,15'],
             'company' => ['sometimes', new IsExists('companies', 'id')],
         ];
     }

@@ -48,7 +48,8 @@ class EmployeesController extends Controller
         $employee->phone = $request->phone;
         $employee->save();
 
-        return redirect()->back()->with('success', 'Employee created successfully!');
+        // return redirect()->back()->with('success', 'Employee created successfully!');
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
     }
 
     /**
