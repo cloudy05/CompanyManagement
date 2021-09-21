@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Employee;
 
+use App\Models\Company;
+use App\Rules\IsExists;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateEmployee extends FormRequest
@@ -28,6 +30,8 @@ class CreateEmployee extends FormRequest
             'last_name' => ['required', 'string', 'max:30', 'min:2'],
             'email' => ['required', 'email', 'unique:employees,email'],
             'phone' => ['string', 'max:15'],
+            // 'company' => ['required', 'in:' . Company::pluck('id')->implode(',')],
+            'company' => ['required', new IsExists('companies', 'id')],
         ];
     }
 }
